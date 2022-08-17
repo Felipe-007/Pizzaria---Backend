@@ -1,6 +1,7 @@
 //Sistema de Login
 import prismaClient from "../../prisma";
 import { compare } from 'bcryptjs'; //compara se as senhas coincidem
+import { sign } from 'jsonwebtoken';
 
 interface AuthRequest{
   email: string;
@@ -27,7 +28,25 @@ class AuthUserService{
       throw new Error("User/password incorrect")
     }
 
-    return { ok: true }
+    // gera um token JWT e devolve os dados com id, name e email
+    const token = sign(
+      {
+        name: user.name,
+        email: user.email
+      },
+      process.env.JWT_SECRET,
+      {
+        subject: user.id,
+        expiresIn: '30d'  // irá expirar em 30 dias
+      }
+    )
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      token: token
+    }
   }
 }
 
