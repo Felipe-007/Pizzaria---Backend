@@ -5,6 +5,7 @@ import { DetailUserController } from "./controllers/user/DetailUserController";
 import isAuthenticated from "./middlewares/isAuthenticated";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
 import { ListCategoryController } from "./controllers/category/ListCategoryController";
+import { CreateProductController } from "./controllers/product/CreateProductController";
 
 const router = Router();
 
@@ -17,10 +18,16 @@ router.post('/session', new AuthUserController().handle)
 //Dados do user
 router.get('/me', isAuthenticated, new DetailUserController().handle) //ira executar o middlewar isAuthenticated antes de executar o DetailUserController
 
+
 //-- ROTAS CATEGORY
 router.post('/category', isAuthenticated, new CreateCategoryController().handle) //isAuthenticated somente pessoas autenticadas poderão acessar
 
 router.get('/category', isAuthenticated, new ListCategoryController().handle)
+
+
+//-- ROTAS PRODUCT
+router.post('/product', isAuthenticated, new CreateProductController().handle)
+
 
 
 export { router };
