@@ -9,6 +9,7 @@ import { ListCategoryController } from "./controllers/category/ListCategoryContr
 import { CreateProductController } from "./controllers/product/CreateProductController";
 import uploadConfig from './config/multer';
 import { ListByCategoryController } from "./controllers/product/ListByCategoryController";
+import { CreateOrderController } from "./controllers/order/CreateOrderController";
 
 const router = Router();
 
@@ -34,6 +35,10 @@ router.get('/category', isAuthenticated, new ListCategoryController().handle)
 router.post('/product', isAuthenticated, upload.single('file'), new CreateProductController().handle)  //upload.single('file') = middlewar que cuidará do envio da foto
 
 router.get('/category/product', isAuthenticated, new ListByCategoryController().handle)
+
+
+//-- ROTAS ORDENS
+router.post('/order', isAuthenticated, new CreateOrderController().handle)  // abrir mesa
 
 
 export { router };

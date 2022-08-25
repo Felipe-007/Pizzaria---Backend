@@ -54,6 +54,8 @@ model Order{
   table Int
   status Boolean @default(false)
   draft Boolean @default(true)  
+  name String?
+
   create_at DateTime? @default(now())
   update_at DateTime? @default(now())
 
