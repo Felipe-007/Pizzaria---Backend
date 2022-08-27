@@ -8,7 +8,7 @@ class RemoveOrderService {
   async execute({ order_id }: OrderRequest) {
 
     const order = await prismaClient.order.delete({
-      where: {
+      where: { // irá deletar onde o id for igual a order_id
         id: order_id,
       }
     })

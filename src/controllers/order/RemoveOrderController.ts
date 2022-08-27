@@ -12,7 +12,7 @@ class RemoveOrderController{
       order_id
     });
 
-    return res.send(order);
+    return res.json(order);
   }
 }
 
