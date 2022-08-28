@@ -14,6 +14,7 @@ import { RemoveOrderController } from "./controllers/order/RemoveOrderController
 import { AddItemController } from "./controllers/order/AddItemController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
+import { ListOrderController } from "./controllers/order/ListOrderController";
 
 const router = Router();
 
@@ -41,10 +42,12 @@ router.get('/category/product', isAuthenticated, new ListByCategoryController().
 
 //-- ROTAS ORDENS
 router.post('/order', isAuthenticated, new CreateOrderController().handle)  // abrir mesa
-router.delete('/order', isAuthenticated, new RemoveOrderController().handle)
+router.delete('/order', isAuthenticated, new RemoveOrderController().handle)  //exclui as ordens com o numero da mesa
 router.post('/order/add', isAuthenticated, new AddItemController().handle)
-router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle)
-router.put('/order/send', isAuthenticated, new SendOrderController().handle)
+router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle)  //exclui os itens da mesa
+router.put('/order/send', isAuthenticated, new SendOrderController().handle)  //enviar ordem
+router.get('/orders', isAuthenticated, new ListOrderController().handle)  //lista as ordens, listando somente as false pois não estão mais em rascunho
+
 
 
 export { router };

@@ -1,0 +1,15 @@
+//lista as ordens, listando somente as false pois não estão mais em rascunho
+import { Request, Response } from "express";
+import { ListOrdersService } from "../../services/order/ListOrdersService";
+
+class ListOrderController{
+  async handle(req: Request, res: Response){
+    const listOrdersService = new ListOrdersService();
+
+    const orders = await listOrdersService.execute();
+
+    return res.json(orders);
+  }
+}
+
+export { ListOrderController }
