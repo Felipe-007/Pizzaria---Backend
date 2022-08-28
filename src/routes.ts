@@ -15,6 +15,7 @@ import { AddItemController } from "./controllers/order/AddItemController";
 import { RemoveItemController } from "./controllers/order/RemoveItemController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
 import { ListOrderController } from "./controllers/order/ListOrderController";
+import { DetailOrderController } from "./controllers/order/DetailOrderController";
 
 const router = Router();
 
@@ -46,7 +47,9 @@ router.delete('/order', isAuthenticated, new RemoveOrderController().handle)  //
 router.post('/order/add', isAuthenticated, new AddItemController().handle)
 router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle)  //exclui os itens da mesa
 router.put('/order/send', isAuthenticated, new SendOrderController().handle)  //enviar ordem
-router.get('/orders', isAuthenticated, new ListOrderController().handle)  //lista as ordens, listando somente as false pois não estão mais em rascunho
+router.get('/orders', isAuthenticated, new ListOrderController().handle)  //lista as ordens, listando somente as draft:false pois não estão mais em rascunho
+router.get('/order/detail', isAuthenticated, new DetailOrderController().handle)  //acessa os detalhes da ordem já enviada, com status draft:false
+
 
 
 

@@ -14,7 +14,7 @@
 - [x] Adicionar itens a uma mesa e também poder retirar os itens
 - [x] Enviar (order) retirar de rascunho
 - [x] Listar todos os pedidos que não estão em rascunhos(draft)
-- [ ] Poder acessar todos detalhes de uma mesa com pedidos dela
+- [x] Poder acessar todos detalhes de uma mesa com pedidos dela
 - [ ] Concluir pedido
 
 ---
