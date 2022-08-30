@@ -16,6 +16,7 @@ import { RemoveItemController } from "./controllers/order/RemoveItemController";
 import { SendOrderController } from "./controllers/order/SendOrderController";
 import { ListOrderController } from "./controllers/order/ListOrderController";
 import { DetailOrderController } from "./controllers/order/DetailOrderController";
+import { FinishOrderController } from "./controllers/order/FinishOrderController";
 
 const router = Router();
 
@@ -49,6 +50,7 @@ router.delete('/order/remove', isAuthenticated, new RemoveItemController().handl
 router.put('/order/send', isAuthenticated, new SendOrderController().handle)  //enviar ordem
 router.get('/orders', isAuthenticated, new ListOrderController().handle)  //lista as ordens, listando somente as draft:false pois não estão mais em rascunho
 router.get('/order/detail', isAuthenticated, new DetailOrderController().handle)  //acessa os detalhes da ordem já enviada, com status draft:false
+router.put('/order/finish', isAuthenticated, new FinishOrderController().handle)  // irá finalizar o pedido, mudando o status para true
 
 
 

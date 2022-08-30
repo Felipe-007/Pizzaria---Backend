@@ -15,10 +15,10 @@
 - [x] Enviar (order) retirar de rascunho
 - [x] Listar todos os pedidos que não estão em rascunhos(draft)
 - [x] Poder acessar todos detalhes de uma mesa com pedidos dela
-- [ ] Concluir pedido
+- [x] Concluir pedido
 
 ---
 
 ### Regras de Negócio
 
-- [ ] Não Deve ser possível acessar as rotas sem estar autenticado
+- [x] Não Deve ser possível acessar as rotas sem estar autenticado
